@@ -14,7 +14,7 @@ cycles = int(input("\nAnzahl der Zyklen: \n"))
 print("\nSoll die Anzahl der Tiere nach jedem Zyklus angezeigt werden?")
 showAnimalsAfterEveryCycle = input("y/n\n")
 
-if showAnimalsAfterEveryCycle != "y" || "n":
+if showAnimalsAfterEveryCycle != "y" or "n":
   exit("WHY? just WHY?")
 
 
