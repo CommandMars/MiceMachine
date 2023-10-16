@@ -1,5 +1,9 @@
 from sys import exit
 
+def exit(reason):
+    print(reason)
+    sys.exit()
+
 print("Mäuserechner\nBerechne, wie viele Mäuse nach einer bestimmten Anzahl an Zyklen leben würden.")
 
 youth = int(input("\nAnzahl der jungen Tiere: \n"))
@@ -9,6 +13,10 @@ cycles = int(input("\nAnzahl der Zyklen: \n"))
 
 print("\nSoll die Anzahl der Tiere nach jedem Zyklus angezeigt werden?")
 showAnimalsAfterEveryCycle = input("y/n\n")
+
+if showAnimalsAfterEveryCycle != "y" || "n":
+  exit("WHY? just WHY?")
+
 
 print("\nSoll die einzelnen Werte verändert werden?")
 alterEverything = input("y/n\n")
@@ -28,7 +36,8 @@ elif alterEverything == "n":
   decimalPlaces = 0
 
 else:
-  sys.exit(
+  exit("\n\nStop it. Get some help.")
+
 
 for i in range(cycles):
   youthTemporarily = youth
