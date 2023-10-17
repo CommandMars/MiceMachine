@@ -60,8 +60,13 @@ with open("table.csv", "w") as csvfile:
     youth = round(((boomers * boomersToYouth) + (old * oldToYouth)),decimalPlaces)
     boomers = round((youthTemporarily / youthToBoomers), decimalPlaces)
     old = round((boomersTemporarily / boomersToOld), decimalPlaces)
-
+    try:
     writer.writerow([i + 1, youth, boomers, old])
+    except:
+    exit("Zyklus " + str(i+1) + " fehlgeschlagen.")
+    else:
+    print("Zyklus " + str(i+1) + " erfolgreich")
+  
 
     #if the user wants to, it is possible to see the current status after every seccessful cycle
     if showAnimalsAfterEveryCycle == "y":
