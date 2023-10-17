@@ -7,10 +7,11 @@
 #imports for crazy stuff
 import sys
 import csv
+import time
+
 
 #some more crazy stuff noone will really need
 def exit(reason):
-  print(reason)
   sys.exit("\n\n" + reason)
 
 
@@ -35,15 +36,26 @@ if alterEverything == "y":
   youthToBoomers = int(input("junge Tiere zu erwachsenen Tieren: \n"))
   boomersToOld = int(input("erwachsene Tiere zu alten Tieren: \n"))
   decimalPlaces = int(input("Nachkommastellen: \n"))
+  print("Code (" + str(youth) + "/" + str(boomers) + "/" + str(old) + "/" + str(cycles) + "/" + str(boomersToYouth) + "/" + str(oldToYouth) + "/" + str(youthToBoomers) + "/" + str(boomersToOld) + "/" + str(decimalPlaces) + ")")
 elif alterEverything == "n":
-  print("Normaleinstellungen werden übernommen. \n(4/2/2/3/0)")
+  print("Normaleinstellungen werden übernommen.")
   boomersToYouth = 4
   oldToYouth = 2
   youthToBoomers = 2
   boomersToOld = 3
   decimalPlaces = 0
+  print("Code (" + str(youth) + "/" + str(boomers) + "/" + str(old) + "/" + str(cycles) + "/" + str(boomersToYouth) + "/" + str(oldToYouth) + "/" + str(youthToBoomers) + "/" + str(boomersToOld) + "/" + str(decimalPlaces) + ")")
 else:
   exit("Stop it. Get some help.")
+
+#write the reproduce code into a txt file because i got nothing better to do
+txtfile = open("codes.txt", "a")
+obj = time.localtime()
+time_str = time.asctime(obj)
+txtfile.write(time_str)
+txtfile.write(" (" + str(youth) + "/" + str(boomers) + "/" + str(old) + "/" + str(cycles) + "/" + str(boomersToYouth) + "/" + str(oldToYouth) + "/" + str(youthToBoomers) + "/" + str(boomersToOld) + "/" + str(decimalPlaces) + ")")
+txtfile.write("\n")
+txtfile.close
 
 
 print("\nSoll die Anzahl der Tiere nach jedem Zyklus angezeigt werden?")
@@ -62,7 +74,8 @@ try:
           writer = csv.writer(csvfile, delimiter=";", quotechar='"', quoting=csv.QUOTE_MINIMAL)
           
           print("\nSimulation wird gestartet.")
-          
+
+          #calculate
           for i in range(cycles):
             youthTemporarily = youth
             boomersTemporarily = boomers
@@ -102,6 +115,5 @@ if showAnimalsAfterEveryCycle == "n":
   print("Anzahl der erwachsenen Tiere: " + str(boomers))
   print("Anzahl der alten Tiere: " + str(old))
 
-
-print("\n\n\n\n\nthe end")
 #the end
+print("\nthe end")
